@@ -1,16 +1,12 @@
 from aiogram import Dispatcher, Bot
 from aiogram.types import Update
 from fastapi import APIRouter, Depends, Header, HTTPException
-from pydantic import BaseModel, SecretStr
+from pydantic import SecretStr
 from starlette import status
 
 from example_bot.web.stubs import BotStub, DispatcherStub, SecretStub
 
-webhook_router = APIRouter(prefix="/webhook")
-
-
-class WebhookSecret(BaseModel):
-    secret: SecretStr
+webhook_router = APIRouter(prefix="/webhook", tags=["Telegram Webhook"])
 
 
 @webhook_router.post("")
