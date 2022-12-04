@@ -33,9 +33,9 @@ dynamic = ["version"]
 [project.optional-dependencies]
 
 [project.urls]
-Documentation = "https://github.com/aiogram/aiogram-deta#readme"
-Issues = "https://github.com/aiogram/aiogram-deta/issues"
-Source = "https://github.com/aiogram/aiogram-deta"
+Documentation = "https://github.com/aiogram/deta#readme"
+Issues = "https://github.com/aiogram/deta/issues"
+Source = "https://github.com/aiogram/deta"
 
 [tool.hatch.version]
 path = "aiogram_deta/__about__.py"
