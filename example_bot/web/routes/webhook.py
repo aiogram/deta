@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, Header, HTTPException
 from pydantic import BaseModel, SecretStr
 from starlette import status
 
-from app.web.stubs import BotStub, DispatcherStub, SecretStub
+from example_bot.web.stubs import BotStub, DispatcherStub, SecretStub
 
 webhook_router = APIRouter(prefix="/webhook")
 

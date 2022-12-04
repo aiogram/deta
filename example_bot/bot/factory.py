@@ -2,8 +2,8 @@ from aiogram import Dispatcher, Bot
 from deta import Deta
 
 from aiogram_deta.storage import DetaStorage
-from app.bot.handlers.echo import echo_router
-from app.bot.handlers.form import form_router
+from example_bot.bot.handlers.echo import echo_router
+from example_bot.bot.handlers.form import form_router
 
 
 def create_dispatcher(deta: Deta) -> Dispatcher:

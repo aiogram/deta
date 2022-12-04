@@ -42,5 +42,5 @@ path = "aiogram_deta/__about__.py"
 
 [tool.hatch.build.targets.sdist]
 exclude = [
-    "example",
+    "app",
 ]
