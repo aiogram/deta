@@ -1,0 +1,1 @@
+{"id":"de4f4cc2-d2b4-46da-8912-4bb60e06326f","space":41455,"runtime":"python3.9","name":"bot","path":"f6r104","project":"a0f8c57y","account":"144798365827","region":"eu-central-1","deps":["aiogram==3.0.0b6","aiogram-deta==1.0.0a0","deta[async]==1.1.0a2","fastapi"],"envs":["TELEGRAM_TOKEN","TELEGRAM_SECRET"],"public":true,"log_level":"debug","cron":""}

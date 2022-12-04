@@ -1,0 +1,17 @@
+{
+  "name": "example-bot",
+  "description": "Example Bot",
+  "runtime": "python3.9",
+  "env": [
+    {
+      "key": "TELEGRAM_TOKEN",
+      "description": "Telegram Bot Token obtained via Bot Father",
+      "required": true
+    },
+    {
+      "key": "TELEGRAM_SECRET",
+      "description": "Webhook secret string",
+      "required": true
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+.idea
+*.py[cod]
+dist/
+.pytest_cache
+.venv

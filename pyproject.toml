@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aiogram-deta"
+description = 'aiogram Deta.sh integration'
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+keywords = [
+    "aiogram",
+    "deta",
+]
+authors = [
+    { name = "Alex Root Junior", email = "jroot.junior@gmail.com" },
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: Implementation :: CPython",
+]
+dependencies = [
+    "deta[async]==1.1.0a2",
+    "fastapi==0.88.0",
+    "aiogram==3.0.0b6",
+]
+dynamic = ["version"]
+
+[project.optional-dependencies]
+
+[project.urls]
+Documentation = "https://github.com/aiogram/aiogram-deta#readme"
+Issues = "https://github.com/aiogram/aiogram-deta/issues"
+Source = "https://github.com/aiogram/aiogram-deta"
+
+[tool.hatch.version]
+path = "aiogram_deta/__about__.py"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    "example",
+]
