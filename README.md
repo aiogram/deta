@@ -11,7 +11,7 @@ Then click on this button:
 
 [![Deploy](https://button.deta.dev/1/svg)](https://go.deta.dev/deploy?https://github.com/aiogram/deta)
 
-After that you can set webhook into new URL received from Deta, for example with using CURL:
+After that you can set webhook into new URL received from Deta, for example by using CURL:
 
 ```bash
 curl -X POST https://api.telegram.org/bot<TELEGRAM_TOKEN>/setWebhook
