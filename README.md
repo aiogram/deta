@@ -9,7 +9,7 @@ To secure your webhook endpoint, you will need a secret word (`TELEGRAM_SECRET`)
 
 Then click on this button:
 
-[![Deploy](https://button.deta.dev/1/svg)](https://go.deta.dev/deploy?https://github.com/aiogram/deta)
+[![Deploy](https://button.deta.dev/1/svg)](https://go.deta.dev/deploy?repo=https://github.com/aiogram/deta)
 
 After that you can set webhook into new URL received from Deta, for example by using CURL:
 
