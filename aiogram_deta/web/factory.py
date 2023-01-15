@@ -2,8 +2,8 @@ from aiogram import Dispatcher, Bot
 from deta import Deta
 from fastapi import FastAPI
 
-from example_bot.web.routes.webhook import webhook_router
-from example_bot.web.stubs import BotStub, DispatcherStub, SecretStub
+from aiogram_deta.web.webhook import webhook_router
+from aiogram_deta.web.stubs import BotStub, DispatcherStub, SecretStub
 
 
 def create_app(deta: Deta, bot: Bot, dispatcher: Dispatcher, webhook_secret: str) -> FastAPI:

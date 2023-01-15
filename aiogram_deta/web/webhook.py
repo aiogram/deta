@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, Header, HTTPException
 from pydantic import SecretStr
 from starlette import status
 
-from example_bot.web.stubs import BotStub, DispatcherStub, SecretStub
+from aiogram_deta.web.stubs import BotStub, DispatcherStub, SecretStub
 
 webhook_router = APIRouter(prefix="/webhook", tags=["Telegram Webhook"])
 
