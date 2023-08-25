@@ -1,9 +1,13 @@
 from abc import ABC, abstractmethod
 from typing import Optional, Dict, Any, Literal
 
-from aiogram import Bot
 from aiogram.fsm.state import State
-from aiogram.fsm.storage.base import BaseStorage, StorageKey, StateType, DEFAULT_DESTINY
+from aiogram.fsm.storage.base import (
+    BaseStorage,
+    StorageKey,
+    StateType,
+    DEFAULT_DESTINY,
+)
 from deta import AsyncBase
 
 
@@ -69,7 +73,7 @@ class DefaultKeyBuilder(KeyBuilder):
         return self.separator.join(parts)
 
 
-class DetaStorage(BaseStorage):
+class DetaFSMContext(BaseStorage):
     def __init__(
         self,
         deta_base: AsyncBase,
@@ -81,7 +85,7 @@ class DetaStorage(BaseStorage):
         self.deta_base = deta_base
         self.key_builder = key_builder
 
-    async def set_state(self, bot: Bot, key: StorageKey, state: StateType = None) -> None:
+    async def set_state(self, key: StorageKey, state: StateType = None) -> None:
         record_key = self.key_builder.build(key, "state")
         state = state.state if isinstance(state, State) else state
         if state is None:
@@ -89,21 +93,21 @@ class DetaStorage(BaseStorage):
         else:
             await self.deta_base.put({"state": state}, key=record_key)
 
-    async def get_state(self, bot: Bot, key: StorageKey) -> Optional[str]:
+    async def get_state(self, key: StorageKey) -> Optional[str]:
         record_key = self.key_builder.build(key, "state")
         value = await self.deta_base.get(key=record_key)
         if not value:
             return None
         return value.get("state")
 
-    async def set_data(self, bot: Bot, key: StorageKey, data: Dict[str, Any]) -> None:
+    async def set_data(self, key: StorageKey, data: Dict[str, Any]) -> None:
         record_key = self.key_builder.build(key, "data")
         if not data:
             await self.deta_base.delete(key=record_key)
         else:
             await self.deta_base.put(data, key=record_key)
 
-    async def get_data(self, bot: Bot, key: StorageKey) -> Dict[str, Any]:
+    async def get_data(self, key: StorageKey) -> Dict[str, Any]:
         record_key = self.key_builder.build(key, "data")
         result = await self.deta_base.get(key=record_key)
         if not result:
