@@ -1,4 +1,4 @@
-aiogram==3.0.0b6
-aiogram-deta==1.0.0a0
-deta[async]==1.1.0a2
-fastapi
+aiogram==3.0.0rc1
+deta==1.2.0
+fastapi==0.101.1
+uvicorn==0.23.2

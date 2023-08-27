@@ -1,13 +1,17 @@
-import logging
 from typing import Any, Dict
 
 from aiogram import F, Router, html
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
-from aiogram.types import KeyboardButton, Message, ReplyKeyboardMarkup, ReplyKeyboardRemove
+from aiogram.types import (
+    KeyboardButton,
+    Message,
+    ReplyKeyboardMarkup,
+    ReplyKeyboardRemove,
+)
 
-form_router = Router()
+router = Router()
 
 
 class Form(StatesGroup):
@@ -16,7 +20,7 @@ class Form(StatesGroup):
     language = State()
 
 
-@form_router.message(Command("start"))
+@router.message(Command("dialog"))
 async def command_start(message: Message, state: FSMContext) -> None:
     await state.set_state(Form.name)
     await message.answer(
@@ -25,8 +29,8 @@ async def command_start(message: Message, state: FSMContext) -> None:
     )
 
 
-@form_router.message(Command("cancel"))
-@form_router.message(F.text.casefold() == "cancel")
+@router.message(Command("cancel"))
+@router.message(F.text.casefold() == "cancel")
 async def cancel_handler(message: Message, state: FSMContext) -> None:
     """
     Allow user to cancel any action
@@ -35,7 +39,6 @@ async def cancel_handler(message: Message, state: FSMContext) -> None:
     if current_state is None:
         return
 
-    logging.info("Cancelling state %r", current_state)
     await state.clear()
     await message.answer(
         "Cancelled.",
@@ -43,7 +46,7 @@ async def cancel_handler(message: Message, state: FSMContext) -> None:
     )
 
 
-@form_router.message(Form.name)
+@router.message(Form.name)
 async def process_name(message: Message, state: FSMContext) -> None:
     await state.update_data(name=message.text)
     await state.set_state(Form.like_bots)
@@ -61,7 +64,7 @@ async def process_name(message: Message, state: FSMContext) -> None:
     )
 
 
-@form_router.message(Form.like_bots, F.text.casefold() == "no")
+@router.message(Form.like_bots, F.text.casefold() == "no")
 async def process_dont_like_write_bots(message: Message, state: FSMContext) -> None:
     data = await state.get_data()
     await state.clear()
@@ -72,22 +75,21 @@ async def process_dont_like_write_bots(message: Message, state: FSMContext) -> N
     await show_summary(message=message, data=data, positive=False)
 
 
-@form_router.message(Form.like_bots, F.text.casefold() == "yes")
+@router.message(Form.like_bots, F.text.casefold() == "yes")
 async def process_like_write_bots(message: Message, state: FSMContext) -> None:
     await state.set_state(Form.language)
-
     await message.reply(
         "Cool! I'm too!\nWhat programming language did you use for it?",
         reply_markup=ReplyKeyboardRemove(),
     )
 
 
-@form_router.message(Form.like_bots)
-async def process_unknown_write_bots(message: Message, state: FSMContext) -> None:
+@router.message(Form.like_bots)
+async def process_unknown_write_bots(message: Message) -> None:
     await message.reply("I don't understand you :(")
 
 
-@form_router.message(Form.language)
+@router.message(Form.language)
 async def process_language(message: Message, state: FSMContext) -> None:
     data = await state.update_data(language=message.text)
     await state.clear()

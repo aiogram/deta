@@ -4,7 +4,11 @@ from fastapi import APIRouter, Depends, Header, HTTPException
 from pydantic import SecretStr
 from starlette import status
 
-from example_bot.web.stubs import BotStub, DispatcherStub, SecretStub
+from aiogram_deta.fastapi.stubs import (
+    BotStub,
+    DispatcherStub,
+    SecretStub,
+)
 
 webhook_router = APIRouter(prefix="/webhook", tags=["Telegram Webhook"])
 
@@ -18,7 +22,9 @@ async def webhook_route(
     dispatcher: Dispatcher = Depends(DispatcherStub),
 ):
     if secret.get_secret_value() != expected_secret:
-        raise HTTPException(detail="Invalid secret", status_code=status.HTTP_401_UNAUTHORIZED)
-
+        raise HTTPException(
+            detail="Invalid secret",
+            status_code=status.HTTP_401_UNAUTHORIZED
+        )
     await dispatcher.feed_update(bot, update=update)
     return {"ok": True}
