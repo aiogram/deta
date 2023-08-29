@@ -7,7 +7,7 @@ from aiogram.types import Message
 from aiogram_deta.space import DetaBase
 from aiogram.utils.markdown import hide_link
 
-from bot.filters.trigger import TriggerFilter
+from ..filters import TriggerFilter
 
 router = Router()
 

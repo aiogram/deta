@@ -1,6 +1,6 @@
 from aiogram import Dispatcher
 
-from bot.handlers import (
+from . import (
     language_form,
     triggers,
     echo,

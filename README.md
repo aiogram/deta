@@ -3,7 +3,7 @@
 ## Deployment Example
 
 To get started, message @BotFather on Telegram to register your bot and receive its authentication
-token (`TELEGRAM_TOKEN`). To secure your webhook endpoint, you will need a secret word (`TELEGRAM_SECRET`)
+token (`BOT_TOKEN`). To secure your webhook endpoint, you will need a secret word (`WEBHOOK_SECRET`)
 
 Brief instructions:
 - Create a new project using the [Space CLI](https://deta.space/docs/en/build/reference/cli) with the command ```space new```
@@ -17,9 +17,9 @@ you can start the process of installing the bot on the cloud using ```space push
 After that you can set webhook into new URL received from Deta, for example by using CURL:
 
 ```bash
-curl -X POST https://api.telegram.org/bot<TELEGRAM_TOKEN>/setWebhook
-   -H "Content-Type: application/json"
-   -d '{"url": "https://<example-bot>.deta.sh/webhook", "secret_token": "<TELEGRAM_SECRET>"}'
+curl -X POST https://api.telegram.org/bot<TELEGRAM_TOKEN>/setWebhook \
+   -H "Content-Type: application/json" \
+   -d '{"url": "https://<example-bot>.deta.app/webhook", "secret_token": "<TELEGRAM_SECRET>"}'
 ```
 
 Congratulations! Now you have deployed Telegram Bot on Deta.space
@@ -27,6 +27,6 @@ Congratulations! Now you have deployed Telegram Bot on Deta.space
 To stop the webhook, run the following command:
 
 ```bash
-curl -X POST https://api.telegram.org/bot<TELEGRAM_TOKEN>/deleteWebhook
+curl -X POST https://api.telegram.org/bot<TELEGRAM_TOKEN>/deleteWebhook \
    -H "Content-Type: application/json"
 ```

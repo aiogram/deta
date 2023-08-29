@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "aiogram-deta"
-description = 'aiogram Deta.sh integration'
+description = 'aiogram Deta.space integration'
 readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"
@@ -24,9 +24,10 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
 ]
 dependencies = [
-    "deta[async]==1.1.0a2",
-    "fastapi==0.88.0",
-    "aiogram==3.0.0b6",
+    "aiogram==3.0.0rc1",
+    "deta[async]==1.2.0",
+    "fastapi==0.101.1",
+    "uvicorn==0.23.2"
 ]
 dynamic = ["version"]
 

@@ -1,21 +1,15 @@
 v: 0
 micros:
-  - name: aiogram-deta
+  - name: aiogrambot
     src: .
-    include:
-      - main.py
-      - aiogram_deta/
-      - bot/
     engine: python3.9
-    run: uvicorn main:app
-    dev: uvicorn main:app
+    run: uvicorn src.__main__:app
+    dev: uvicorn src.__main__:app
     public_routes:
       - "/webhook"
     presets:
       env:
         - name: BOT_TOKEN
           description: API token of the Telegram bot
-          default: 6368716742:AAHfjiha7E_xC8lCf-Q9TQ5thWdUjWv6mLE
         - name: WEBHOOK_SECRET
           description: The secret to the webhook
-          default: aiogramdetasecret
