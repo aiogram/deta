@@ -11,7 +11,5 @@ micros:
       env:
         - name: BOT_TOKEN
           description: API token of the Telegram bot
-          default: 6368716742:AAHfjiha7E_xC8lCf-Q9TQ5thWdUjWv6mLE
         - name: WEBHOOK_SECRET
           description: The secret to the webhook
-          default: aiogramdetasecret
