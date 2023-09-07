@@ -26,8 +26,8 @@ classifiers = [
 dependencies = [
     "aiogram>=3.0.0rc1,<4",
     "deta[async]>=1.2.0,<2",
-    "fastapi~=0.101.1",
-    "uvicorn~=0.23.2"
+    "fastapi>=0.101.1,<1",
+    "uvicorn>=0.23.2,<1"
 ]
 dynamic = ["version"]
 
