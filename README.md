@@ -14,17 +14,9 @@ you can start the process of installing the bot on the cloud using ```space push
 
 [![Deploy](https://button.deta.dev/1/svg)](https://deta.space/)
 
-After that you can set webhook into new URL received from Deta, for example by using CURL:
-
-```bash
-curl -X POST https://api.telegram.org/bot<TELEGRAM_TOKEN>/setWebhook \
-   -H "Content-Type: application/json" \
-   -d '{"url": "https://<example-bot>.deta.app/webhook", "secret_token": "<TELEGRAM_SECRET>"}'
-```
-
 Congratulations! Now you have deployed Telegram Bot on Deta.space
 
-To stop the webhook, run the following command:
+If you need to stop the webhook, run the following command:
 
 ```bash
 curl -X POST https://api.telegram.org/bot<TELEGRAM_TOKEN>/deleteWebhook \
