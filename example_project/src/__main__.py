@@ -7,8 +7,8 @@ from aiogram_deta.bot import create_dispatcher
 from aiogram_deta.fastapi import create_app
 from aiogram_deta.space import DetaBase
 
-from . import set_bot_commands
 from .handlers import setup_handlers
+from .utils.commands import set_bot_commands
 
 logger = logging.getLogger(__name__)
 
