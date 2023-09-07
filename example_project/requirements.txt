@@ -1,1 +1,2 @@
 aiogram-deta @ git+https://github.com/aiogram/deta@main
+envparse
